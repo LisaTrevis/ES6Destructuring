@@ -1,1 +1,77 @@
 // ----- Destructuring ------
+
+// Let's pretend we're building an object that represents a financial expense:
+// var expense = {
+// 	type: 'Business',
+// 	amount: '$45 USD'
+// };
+
+// To reference these values at a future date, we'd need normally need to write:
+// var type = expense.type;
+// var amount = expense.amount;
+
+// Refactored over to ES6:
+// const { type } = expense;
+// const { amount } = expense;
+// The curly braces here do NOT represent an object, nor do they represent a duplicate key:value pair in the improved object literals
+// When they curly braces are on the LEFT of the assignment operator, they mean "I want to declare a new var called type, and I want it to reference/be set equal to the expense.type property"
+
+
+// However, this is still not DRY code, as we're repeating both const and expense. So let's condense this even more to:
+// var expense = {
+// 	type: 'Business',
+// 	amount: '$45 USD'
+// };
+
+// const { type, amount } = expense;
+
+
+// Let's look at another example in ES5 where we want to print out a summar of this object:
+// var savedFile = {
+// 	extension: 'jpg',
+// 	name: 'repost',
+// 	size: 14404
+// }
+
+// function fileSummary(file) {
+// 	return `The file ${file.name}.${file.extension} is of size ${file.size}.`
+// }
+
+// Destructured with ES6:
+// var savedFile = {
+// 	extension: 'jpg',
+// 	name: 'repost',
+// 	size: 14404
+// }
+
+// function fileSummary({ name, extension, size }) {
+// 	return `The file ${name}.${extension} is of size ${size}.`
+// }
+
+// fileSummary(savedFile) // returns "The file repost.jpg is of size 14404."
+
+
+// If for some reason we wanted to add another argument, we could do so like this:
+// var savedFile = {
+// 	extension: 'jpg',
+// 	name: 'repost',
+// 	size: 14404
+// }
+
+// function fileSummary({ name, extension, size }, { color }) {
+// 	return `The ${color} file ${name}.${extension} is of size ${size}.`
+// }
+
+// fileSummary(savedFile, { color: 'red' }) // returns "The red file repost.jpg is of size 14404."
+
+
+
+
+
+
+
+
+
+
+
+
