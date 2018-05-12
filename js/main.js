@@ -113,11 +113,34 @@
 
 // Let's say we want to have a function that saves a username and password to a database:
 
-function signup(username, password, email, dateOfBirth, city) {
-	// create new user
-};
+// function signup(username, password, email, dateOfBirth, city) {
+// 	// create new user
+// };
 
-signup('myname', 'mypassword', 'me@gmail.com', '6/13/1977', 'Alameda');
+// signup('myname', 'mypassword', 'me@gmail.com', '6/13/1977', 'Alameda');
+// This could throw an error if the arguments aren't entered in the correct order.
+
+// Instead, let's create a user object,and pull the arguments from that, rendering the order unimportant:
+// function signup({ username, password, email, dateOfBirth, city }) {
+
+// }
+
+// const user = {
+// 	username: 'myname',
+// 	password: 'mypassword',
+// 	email: 'myemail@example.com',
+// 	dateOfBirth: '6/13/1977',
+// 	city: 'Alameda'
+// }
+
+// signup(user);
+
+
+// WHY USE DESTRUCTURING OFF OF ARRAYS
+
+
+
+
 
 
 
