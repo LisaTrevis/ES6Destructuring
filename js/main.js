@@ -26,7 +26,7 @@
 // const { type, amount } = expense;
 
 
-// Let's look at another example in ES5 where we want to print out a summar of this object:
+// Let's look at another example in ES5 where we want to print out a summary of this object:
 // var savedFile = {
 // 	extension: 'jpg',
 // 	name: 'repost',
@@ -80,8 +80,12 @@
 
 
 // Can also use the rest operator:
+// const [ name, ...rest ] = companies
+// name = 'Google'
+// rest = [ 'Facebook', 'Uber']
+// OR
 // const [ ...rest ] = companies
-// rest = [ 'Google', Facebook', 'Uber' ]
+// rest = [ 'Google', 'Facebook', 'Uber' ]
 
 
 // Destructuring arrays & objects at the same time (not commonly used)
@@ -137,18 +141,93 @@
 
 
 // WHY USE DESTRUCTURING OFF OF ARRAYS
+// Example: transform an array of arrays as received from an API into an array of objects:
+
+// const points = [
+// 	[4, 5],
+// 	[10, 1],
+// 	[0, 40]	
+// ];
+
+// Map over the array, and for every element in the array, which is a pair of points, we're going to destructure off an x and a y value and then we're going to use the improved object literal syntax to return an object with x and y properties.
+// points.map(pair => {
+// 	const x = pair[0];
+// 	const y = pair[1];
+// });
+
+// Destructured further:
+// points.map(pair => {
+// 	const [ x, y ] = pair;
+// });
+
+// Destructured even further:
+// points.map(([ x, y ]) => {
+// 	return { x: x, y: y };
+// });
+
+// One last destructure:
+// points.map(([ x, y ]) => {
+// 	return { x, y };
+// });
 
 
+// The snippet of code below duplicates references to 'profile' inside of the 'isEngineer' function. Perhaps we can reduce the amount of code used for referencng the 'title' and 'department' properties. Refactor this code to use destructuring. Can you get the body of the 'isEngineer' function down to a single line?
+
+// const profile = {
+//   title: 'Engineer',
+//   department: 'Engineering'
+// };
+
+// function isEngineer(profile) {
+//   var title = profile.title;
+//   var department = profile.department;
+//   return title === 'Engineer' && department === 'Engineering';
+// }
+
+// Initial destructure:
+// function isEngineer(profile) {
+//   const { title } = profile;
+//   const { department } = profile;
+//   return title === 'Engineer' && department === 'Engineering';
+// }
+
+// Second destructure:
+// function isEngineer(profile) {
+//   const { title, department } = profile;
+//   return title === 'Engineer' && department === 'Engineering';
+// }
+
+// Solution in Q&A:
+// const isEngineer = ({ title, department }) => title === 'Engineer' && department === 'Engineering';
 
 
+// The 'classes' variable holds an array of arrays, where each array represents a single class that a student is enrolled in. Convert this array of arrays into an array of objects, where each object has the keys 'subject', 'time', and 'teacher' and assign the result to 'classesAsObject'. Use array destructuring and the map helper.
+// An array for a class has the form [subject, time, teacher]
+// The resulting data structure should look something like the following:
+// const classesAsObject = [{ subject: 'Geography', time: '2PM', teacher: 'Mrs. Larsen' }]
+
+// const classes = [
+//   [ 'Chemistry', '9AM', 'Mr. Darnick' ],
+//   [ 'Physics', '10:15AM', 'Mrs. Lithun'],
+//   [ 'Math', '11:30AM', 'Mrs. Vitalis' ]
+// ];
+
+// const classesAsObject = classes.map(([ subject, time, teacher ]) => {
+// 	return { subject, time, teacher };
+// });
 
 
+// RECURSION AND DESTRUCTURING
+// Use array destructuring, recursion, and the rest/spread operators to create a function 'double' that will return a new array with all values inside of it multipled by two. Do NOT use array helpers (i.e. map, forEach or reduce).
+// Example: input double([1, 2, 3]), output [2, 4, 6]
 
+// const numbers = [1, 2, 3];
 
-
-
-
-
-
-
-
+// To destructure the array, reference the first number in the array with number or num, then use the rest operator to grab the remaining items in the array, irregardless of the number of items in the array:
+// const double = ([ num, ...rest ]) => {
+	// If there is more than one item in the array, return the first item doubled, then apply the spread operator to the output of the function, which returns an array. If we don't spread the recursive double(rest), then we end up with nested arrays, i.e. [ 2, [ 4, [6] ] ]. Since we want [2, 4, 6], the spread operator is being used to merge the arrays.
+	// [2, ...[4, ...[6] ] ] = [ 2, 4, 6 ]
+    // if (rest.length > 0) return [num * 2, ...double(rest)];
+    // If there's only one item in the array, return that item doubled in its own array:
+//     return [num * 2];
+// }
