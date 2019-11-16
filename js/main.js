@@ -231,3 +231,68 @@
     // If there's only one item in the array, return that item doubled in its own array:
 //     return [num * 2];
 // }
+
+
+// ********************************* //
+// ********************************* //
+
+// ES6 Maximilian Schwartzmuller
+
+// let numbers = [1, 2, 3]
+
+// To grab an item from an array, normally we'd do this:
+
+// let a = numbers[0] // sets value to 1
+// let b = numbers[1] // sets value to 2
+// let c = numbers[2] // sets value to 3
+
+// But with destructuring, we can do this:
+
+// let [a, b] = numbers // sets value of both and can be used for as many items in the array as we want. DOES NOT affect the value of the original array.
+
+// console.log(a) // returns 1
+// console.log(b) // returns 2
+
+// console.log(d) // returns undefined as arrays are basically infinte containers whose values can be accessed, even if that value is as of yet undefined
+
+// Can also use the rest operator like so:
+
+// let [a, ...b] = numbers
+
+// console.log(b)
+
+// We can also prepare for a case where a value we want to pull out doesn't exist:
+
+// let numbers = [1, 2, 3]
+
+// let [a = "default", b, c, d = 4] = numbers
+
+// console.log(a) // returns 1
+// console.log(d) // returns 4
+
+// We can also switch values without having to use a helper variable, i.e. let c = a, etc.:
+
+// let a = 5
+// let b = 10; // NOTE: the trailing semicolon is required before doing the swap
+
+// [b, a] = [a, b]
+
+// console.log(a) // returns 10
+// console.log(b) // returns 5
+
+// We can also pull out particular numbers:
+
+// let numbers = [1, 2, 3]
+
+// let [a, , c] = numbers
+// console.log(a, c)
+
+// We can even destructure it without declaring it:
+
+// let [a, b] = [1, 2, 3]
+
+// console.log(a, b) // returns 1 and 2
+
+
+// ************ DESTRUCTURING OBJECTS **************
+
