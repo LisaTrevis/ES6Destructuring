@@ -296,3 +296,28 @@
 
 // ************ DESTRUCTURING OBJECTS **************
 
+// Most things are the same, except we use curly braces instead of square brackets and can't just skip items in the order they appear in the object like we can with arrays because we're grabbing the properties by name rather than location/position, but we CAN just leave it out:
+
+let obj = {
+	name: "Lisa",
+	age: 42,
+	greet: function() {
+		console.log("Hello, there!")
+	}
+}
+
+// let {name, greet} = obj
+
+// console.log(name)
+// greet()
+
+// We can also use aliases if we want to rename something outside of the object:
+
+let {name, greet: hello} = obj
+
+hello() // returns "Hello!"
+// NOTE: once we give something an alias outside of the object, we HAVE to use that name. We can't revert back to calling greet(), we'll get an error.
+
+
+
+
